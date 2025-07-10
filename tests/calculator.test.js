@@ -112,7 +112,7 @@ describe('divideNumbers', () => {
     expect(calculator.divide(-5, -6)).toBeCloseTo(0.83)
   })
 
-  test('divide a number by zero', () => {
+  test('divides a number by zero', () => {
     expect(() => calculator.divide(0, 0)).toThrow(Error)
     expect(() => calculator.divide(2, 0)).toThrow(Error)
     expect(() => calculator.divide(-2, 0)).toThrow(Error)
@@ -134,7 +134,7 @@ describe('divideNumbers', () => {
     expect(calculator.divide(5, 2.5)).toBeCloseTo(2)
   })
 
-  test('divides two floating point numbers', () => {
+  test('handles floating point numbers', () => {
     expect(calculator.divide(0.1, 0.3)).toBeCloseTo(0.33)
     expect(calculator.divide(-0.5, -0.6)).toBeCloseTo(0.83)
     expect(calculator.divide(-0.5, 0.6)).toBeCloseTo(-0.83)
@@ -150,5 +150,47 @@ describe('divideNumbers', () => {
   test('checks for missing arguments', () => {
     expect(() => calculator.divide(5)).toThrow(Error)
     expect(() => calculator.divide()).toThrow(Error)
+  })
+})
+
+// Tests for 'multiply' function
+describe('multiplyNumbers', () => {
+  test('multiplies two positive numbers', () => {
+    expect(calculator.multiply(3, 3)).toEqual(9)
+  })
+
+  test('handles negative numbers', () => {
+    expect(calculator.multiply(-3, -3)).toEqual(9)
+    expect(calculator.multiply(3, -2)).toEqual(-6)
+    expect(calculator.multiply(-3, 2)).toEqual(-6)
+  })
+
+  test('multiplies a number with zero', () => {
+    expect(calculator.multiply(0, 0)).toEqual(0)
+    expect(calculator.multiply(2, 0)).toEqual(0)
+    expect(calculator.multiply(-2, 0)).toEqual(-0)
+  })
+
+  test('multiplies one positive, one negative number', () => {
+    expect(calculator.multiply(5, -6)).toEqual(-30)
+  })
+
+  test('handles floating point numbers', () => {
+    expect(calculator.multiply(5.5, 2.2)).toBeCloseTo(12.1)
+    expect(calculator.multiply(5, 2.5)).toBeCloseTo(12.5)
+    expect(calculator.multiply(-5.5, -2.2)).toBeCloseTo(12.1)
+    expect(calculator.multiply(5, -2.5)).toBeCloseTo(-12.5)
+
+  })
+
+  test('throws error when x or y is not a number', () => {
+    expect(() => calculator.multiply('hello', 5)).toThrow(Error)
+    expect(() => calculator.multiply(5, null)).toThrow(Error)
+    expect(() => calculator.multiply('hello', NaN)).toThrow(Error)
+  })
+
+  test('checks for missing arguments', () => {
+    expect(() => calculator.multiply(5)).toThrow(Error)
+    expect(() => calculator.multiply()).toThrow(Error)
   })
 })
