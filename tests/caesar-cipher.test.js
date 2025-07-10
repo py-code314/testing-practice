@@ -20,4 +20,8 @@ describe('caesarCipher', () => {
     expect(caesarCipher('CrYpToCoRnEr', 33)).toEqual('JyFwAvJvYuLy')
   })
 
+  test('works with non-alphabetical characters', () => {
+    expect(caesarCipher('Hello, World!', 3)).toEqual('Khoor, Zruog!')
+  })
+
 })
