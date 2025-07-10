@@ -20,9 +20,7 @@ function generateCipherTextAlphabetArray(plainTextAlphabetArray, key) {
   const cipherTextAlphabetArray = plainTextAlphabetArray.map((_, index) =>
     index + key <= 25
       ? plainTextAlphabetArray[index + key]
-      : plainTextAlphabetArray[
-          index + key - 26 * Math.floor((index + key) / 26)
-        ]
+      : plainTextAlphabetArray[(index + key) % 26]
   )
 
   return cipherTextAlphabetArray
@@ -36,10 +34,16 @@ function generateCipherText(
   let cipherText = ''
   string.split('').forEach((stringAlphabet) => {
     plainTextAlphabetArray.forEach((plainAlphabet) => {
-      if (stringAlphabet === plainAlphabet) {
-        const index = plainTextAlphabetArray.indexOf(stringAlphabet)
+      if (stringAlphabet.toLowerCase() === plainAlphabet) {
+        const index = plainTextAlphabetArray.indexOf(
+          stringAlphabet.toLowerCase()
+        )
         const cipherAlphabet = cipherTextAlphabetArray[index]
-        cipherText += cipherAlphabet
+        if (stringAlphabet === stringAlphabet.toUpperCase()) {
+          cipherText += cipherAlphabet.toUpperCase()
+        } else {
+          cipherText += cipherAlphabet
+        }
       }
     })
   })
