@@ -53,6 +53,15 @@ describe('analyzeArray', () => {
     })
   })
 
+  test('array has all zero values', () => {
+    expect(analyzeArray([2, 2, 2, 2])).toEqual({
+      average: 2,
+      min: 2,
+      max: 2,
+      length: 4,
+    })
+  })
+
   test('array has only one value', () => {
     expect(analyzeArray([5])).toEqual({
       average: 5,
@@ -68,6 +77,7 @@ describe('analyzeArray', () => {
 
   test('throws an error for non-numerical values', () => {
     expect(() => analyzeArray([null, 4, 8, 2])).toThrow('All values must be numbers')
+    // expect(() => analyzeArray([4, NaN, 2])).toThrow('All values must be numbers')
   })
 
 
