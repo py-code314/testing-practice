@@ -1,5 +1,20 @@
 // Function to generate cipher text
-function caesarCipher(string, key) {
+function caesarCipher(str, key) {
+  // Check if str is string
+  if (typeof str !== 'string' && typeof str !== 'undefined') {
+    throw new TypeError('Input must be a string')
+  }
+
+  // Check if key is number
+  if (typeof key !== 'number' && typeof key !== 'undefined') {
+    throw new TypeError('Input must be a number')
+  }
+
+  // Check for missing arguments
+  if (typeof str === 'undefined' || typeof key === 'undefined') {
+    throw new Error('Missing arguments')
+  }
+
   // Generate array with lower and upper case letters
   const plainTextAlphabetArray =
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
@@ -16,17 +31,17 @@ function caesarCipher(string, key) {
     cipherTextAlphabetArray
   )
 
-  const cipherText = generateCipherText(string, matchingArray)
+  const cipherText = generateCipherText(str, matchingArray)
 
   return cipherText
 }
 
 function generateCipherTextAlphabetArray(plainTextAlphabetArray, key) {
   // Use modulo 52 to generate new index if index + key > 50
-  const cipherTextAlphabetArray = plainTextAlphabetArray.map((_, index) =>
-    index + key <= 50
-      ? plainTextAlphabetArray[index + key]
-      : plainTextAlphabetArray[(index + key) % 52]
+
+  const length = plainTextAlphabetArray.length
+  const cipherTextAlphabetArray = plainTextAlphabetArray.map((_, index) => plainTextAlphabetArray[(index + key + length) % 52]
+
   )
 
   return cipherTextAlphabetArray
@@ -43,10 +58,10 @@ function generateMatchingArray(
   return matchingArray
 }
 
-function generateCipherText(string, matchingArray) {
+function generateCipherText(str, matchingArray) {
   let cipherText = ''
 
-  string.split('').forEach((stringAlphabet) => {
+  str.split('').forEach((stringAlphabet) => {
     let matched = false
     for (let i = 0; i < matchingArray.length; i++) {
       const array = matchingArray[i]
