@@ -2,9 +2,6 @@
 // Import the module
 const capitalize = require('../src/capitalize')
 
-//TODO: check input is string
-
-
 // Tests
 describe('capitalizeString', () => {
   it('capitalizes all lower case word', () => {
@@ -53,7 +50,12 @@ describe('capitalizeString', () => {
 
   it('does not change a string starting with non-alphabet character', () => {
     expect(capitalize('!apple')).toBe('!apple')
+    expect(capitalize('1apple')).toBe('1apple')
     expect(capitalize(' hello')).toBe(' hello')
     expect(capitalize('😊smile')).toBe('😊smile')
+  })
+
+  it('throws error if input is not a string', () => {
+    expect(() => capitalize(null)).toThrow('Input must be a string')
   })
 })
