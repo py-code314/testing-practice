@@ -26,7 +26,7 @@ describe('analyzeArray', () => {
     })
   })
 
-  test('array has all negative values', () => {
+  test('array has a few zero values', () => {
     const result = analyzeArray([-1, 0, 3, -4, 0, 6])
     expect(result.average).toBeCloseTo(0.666, 2)
     expect(result.min).toEqual(-4)
@@ -42,4 +42,19 @@ describe('analyzeArray', () => {
       length: 4,
     })
   })
+
+  test('array has only one value', () => {
+    expect(analyzeArray([5])).toEqual({
+      average: 5,
+      min: 5,
+      max: 5,
+      length: 1,
+    })
+  })
+
+  test('throws an error for empty array', () => {
+    expect(() => analyzeArray([])).toThrow('Array must not be empty')
+  })
+
+
 })

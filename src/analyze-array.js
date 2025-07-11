@@ -3,12 +3,15 @@ function analyzeArray(array) {
   // Initialize empty object
   const object = {}
 
-  // Get total
-  const total = array.reduce((previous, current) => previous + current, 0)
-
   // Get length of array
   const length = array.length
+  if (!length) {
+    throw new Error('Array must not be empty')
+  }
   object.length = length
+
+  // Get total
+  const total = array.reduce((previous, current) => previous + current, 0)
 
   // Get average
   const average = total / length
