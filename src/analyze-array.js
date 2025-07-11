@@ -11,7 +11,12 @@ function analyzeArray(array) {
   object.length = length
 
   // Get total
-  const total = array.reduce((previous, current) => previous + current, 0)
+  const total = array.reduce((previous, current) => {
+    if (typeof current !== 'number') {
+      throw new Error('All values must be numbers')
+    }
+    return previous + current
+  }, 0)
 
   // Get average
   const average = total / length

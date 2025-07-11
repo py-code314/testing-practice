@@ -56,5 +56,9 @@ describe('analyzeArray', () => {
     expect(() => analyzeArray([])).toThrow('Array must not be empty')
   })
 
+  test('throws an error for non-numerical values', () => {
+    expect(() => analyzeArray([null, 4, 8, 2])).toThrow('All values must be numbers')
+  })
+
 
 })
