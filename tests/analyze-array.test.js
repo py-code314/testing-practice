@@ -9,6 +9,8 @@ describe('analyzeArray', () => {
     expect(analyzeArray([11,80,33,46])).toEqual({average: 42.5, min: 11, max: 80, length: 4})
   })
 
+  
+
   test('array has few negative values', () => {
     const result = analyzeArray([1, -8, 3, 4, -2, 6])
     expect(result.average).toBeCloseTo(0.666, 2)
@@ -24,6 +26,14 @@ describe('analyzeArray', () => {
       max: -1,
       length: 6,
     })
+  })
+
+  test('works with floating point numbers', () => {
+    const result = analyzeArray([1, 8.5, 3, 4.0, 2.1])
+    expect(result.average).toBeCloseTo(3.720, 2)
+    expect(result.min).toEqual(1)
+    expect(result.max).toEqual(8.5)
+    expect(result.length).toEqual(5)
   })
 
   test('array has a few zero values', () => {
