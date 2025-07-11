@@ -2,61 +2,58 @@
 // Import the module
 const capitalize = require('../src/capitalize')
 
+//TODO: check input is string
+
+
 // Tests
 describe('capitalizeString', () => {
-  test('capitalizes all lower case word', () => {
+  it('capitalizes all lower case word', () => {
     expect(capitalize('hello')).toBe('Hello')
   })
 
-  test('capitalizes all upper case word', () => {
+  it('capitalizes all upper case word', () => {
     expect(capitalize('THIS')).toBe('This')
   })
 
-  test('capitalizes mixed case word', () => {
+  it('capitalizes mixed case word', () => {
     expect(capitalize('aNaToMy')).toBe('Anatomy')
   })
 
-  test('capitalizes a mixed case sentence', () => {
+  it('capitalizes a sentence', () => {
     expect(capitalize('thIS is A TEsT SENTENCE')).toBe(
       'This is a test sentence'
     )
   })
 
-  test('works with numbers and punctuation', () => {
+  it('works with numbers and punctuation', () => {
     expect(capitalize("July 4 is America's Independence Day!")).toBe(
       "July 4 is america's independence day!"
     )
   })
 
-  test('capitalizes a string with accented character', () => {
+  it('capitalizes a string with accented characters', () => {
     expect(capitalize('éclairs')).toBe('Éclairs')
   })
 
-  test('capitalizes a single lower case character', () => {
+  it('capitalizes a single lower case character', () => {
     expect(capitalize('a')).toBe('A')
   })
 
-  test('capitalizes a single upper case character', () => {
+  it('capitalizes a single upper case character', () => {
     expect(capitalize('A')).toBe('A')
   })
 
-  test('works with an empty string', () => {
+  it('works with an empty string', () => {
     expect(capitalize('')).toBe('')
   })
 
-  test('works with spaces', () => {
+  it('works with spaces', () => {
     expect(capitalize('   ')).toBe('   ')
   })
 
-  test('capitalizes a word starting with non-alphabet character', () => {
+  it('does not change a string starting with non-alphabet character', () => {
     expect(capitalize('!apple')).toBe('!apple')
-  })
-
-  test('works with a string with leading space', () => {
     expect(capitalize(' hello')).toBe(' hello')
-  })
-
-  test('works with a string starting with emoji', () => {
     expect(capitalize('😊smile')).toBe('😊smile')
   })
 })
