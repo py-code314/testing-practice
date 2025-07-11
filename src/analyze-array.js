@@ -12,7 +12,7 @@ function analyzeArray(array) {
 
   // Get total
   const total = array.reduce((previous, current) => {
-    if (typeof current !== 'number') {
+    if (typeof current !== 'number' || !Number.isFinite(current)) {
       throw new Error('All values must be numbers')
     }
     return previous + current

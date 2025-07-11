@@ -77,7 +77,11 @@ describe('analyzeArray', () => {
 
   test('throws an error for non-numerical values', () => {
     expect(() => analyzeArray([null, 4, 8, 2])).toThrow('All values must be numbers')
-    // expect(() => analyzeArray([4, NaN, 2])).toThrow('All values must be numbers')
+  })
+
+  test('throws an error for special numbers', () => {
+    expect(() => analyzeArray([4, NaN, 2])).toThrow('All values must be numbers')
+    expect(() => analyzeArray([4, Infinity, 2])).toThrow('All values must be numbers')
   })
 
 
