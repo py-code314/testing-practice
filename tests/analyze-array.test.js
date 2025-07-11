@@ -25,4 +25,21 @@ describe('analyzeArray', () => {
       length: 6,
     })
   })
+
+  test('array has all negative values', () => {
+    const result = analyzeArray([-1, 0, 3, -4, 0, 6])
+    expect(result.average).toBeCloseTo(0.666, 2)
+    expect(result.min).toEqual(-4)
+    expect(result.max).toEqual(6)
+    expect(result.length).toEqual(6)
+  })
+
+  test('array has all zero values', () => {
+    expect(analyzeArray([0, 0, 0, 0])).toEqual({
+      average: 0,
+      min: 0,
+      max: 0,
+      length: 4,
+    })
+  })
 })
