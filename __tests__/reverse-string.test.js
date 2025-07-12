@@ -2,8 +2,8 @@
 // Import module
 const reverseString = require('../src/reverse-string')
 
-//TODO: change test to it
-//TODO: add test to check for a string
+
+
 // Tests
 describe('reverseString', () => {
   it('reverses a single word', () => {
@@ -40,5 +40,9 @@ describe('reverseString', () => {
 
   it('works with white spaces', () => {
     expect(reverseString('   ')).toEqual('   ')
+  })
+
+  it('throws error if input is not a string', () => {
+    expect(() => reverseString(null)).toThrow('Input must be a string')
   })
 })
