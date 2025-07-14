@@ -12,7 +12,14 @@ function analyzeArray(array) {
 
   // Get total
   const total = array.reduce((previous, current) => {
-    if (typeof current !== 'number' || !Number.isFinite(current)) {
+    // Check for special numbers
+    if (typeof current === 'number' && !Number.isFinite(current)) {
+      throw new Error(
+        'All numbers must be valid, finite numbers (not NaN or Infinity)'
+      )
+    }
+    // Check for number inputs
+    if (typeof current !== 'number') {
       throw new Error('All values must be numbers')
     }
     return previous + current
