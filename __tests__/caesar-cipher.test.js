@@ -2,7 +2,7 @@
 // Import module
 const caesarCipher = require('../src/caesar-cipher')
 
-// Tests
+// Tests for caesarCipher() function
 describe('caesarCipher', () => {
   it('generates cipher text for a word', () => {
     expect(caesarCipher('caesar', 5)).toEqual('hfjxfw')

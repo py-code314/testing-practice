@@ -1,4 +1,4 @@
-// Function to generate an object from an array
+/* Analyzes an array of numbers and returns an object */
 function analyzeArray(array) {
   const length = array.length
   if (!length) {
@@ -8,17 +8,20 @@ function analyzeArray(array) {
   const result = {
     length,
     average:
+      // Calculate the total first
       array.reduce((total, currentNumber) => {
-        // Check for special numbers
-        if (typeof currentNumber === 'number' && !Number.isFinite(currentNumber)) {
+        // Check for non-numerical values
+        if (typeof currentNumber !== 'number') {
+          throw new Error('All values must be numbers')
+        }
+
+        // Check for finite numbers
+        if (!Number.isFinite(currentNumber)) {
           throw new Error(
             'All numbers must be valid, finite numbers (not NaN or Infinity)'
           )
         }
-        // Check for number inputs
-        if (typeof currentNumber !== 'number') {
-          throw new Error('All values must be numbers')
-        }
+
         return total + currentNumber
       }, 0) / length,
     min: Math.min(...array),

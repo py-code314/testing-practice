@@ -2,7 +2,7 @@
 // Import the module
 const capitalize = require('../src/capitalize')
 
-// Tests
+// Tests for capitalize() function
 describe('capitalizeString', () => {
   it('capitalizes all lower case word', () => {
     expect(capitalize('hello')).toBe('Hello')

@@ -2,7 +2,7 @@
 // Import module
 const analyzeArray = require('../src/analyze-array')
 
-// Tests
+/* Tests for analyzeArray() function */
 describe('analyzeArray', () => {
   it('outputs an object from an array', () => {
     expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({

@@ -1,50 +1,56 @@
 const calculator = {
-  // Function to add two numbers
+  /* Adds two numbers together */
   add(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
       throw new Error('Both arguments must be provided')
     }
 
-    // Check for type
+    // Check for type of arguments
     if (typeof x !== 'number' || typeof y !== 'number') {
       throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
     if (!Number.isFinite(x) || !Number.isFinite(y)) {
-      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
+      throw new Error(
+        'Both arguments must be finite numbers (not NaN or Infinity)'
+      )
     }
 
     return x + y
   },
-  // Function to subtract two numbers
+
+  /* Subtracts two numbers */
   subtract(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
       throw new Error('Both arguments must be provided')
     }
 
-    // Check for type
+    // Check for type of arguments
     if (typeof x !== 'number' || typeof y !== 'number') {
       throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
     if (!Number.isFinite(x) || !Number.isFinite(y)) {
-      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
+      throw new Error(
+        'Both arguments must be finite numbers (not NaN or Infinity)'
+      )
     }
 
     return x - y
   },
-  // Function to divide two numbers
+
+  /* Divides two numbers */
   divide(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
       throw new Error('Both arguments must be provided')
     }
 
-    // Check for type
+    // Check for type of arguments
     if (typeof x !== 'number' || typeof y !== 'number') {
       throw new Error('Both arguments must be numbers')
     }
@@ -56,26 +62,31 @@ const calculator = {
 
     // Check for finite numbers
     if (!Number.isFinite(x) || !Number.isFinite(y)) {
-      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
+      throw new Error(
+        'Both arguments must be finite numbers (not NaN or Infinity)'
+      )
     }
 
     return x / y
   },
-  // Function to multiply two numbers
+
+  /* Multiplies two numbers */
   multiply(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
       throw new Error('Both arguments must be provided')
     }
 
-    // Check for type
+    // Check for type of arguments
     if (typeof x !== 'number' || typeof y !== 'number') {
       throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
     if (!Number.isFinite(x) || !Number.isFinite(y)) {
-      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
+      throw new Error(
+        'Both arguments must be finite numbers (not NaN or Infinity)'
+      )
     }
 
     return x * y

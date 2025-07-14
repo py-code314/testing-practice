@@ -2,9 +2,7 @@
 // Import module
 const reverseString = require('../src/reverse-string')
 
-
-
-// Tests
+// Tests for reverseString()
 describe('reverseString', () => {
   it('reverses a single word', () => {
     expect(reverseString('hello')).toEqual('olleh')
