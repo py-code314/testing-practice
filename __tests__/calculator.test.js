@@ -30,7 +30,9 @@ describe('Calculator', () => {
     it('throws error for invalid inputs', () => {
       expect(() => calculator.add('hello', 5)).toThrow('Input must be a number')
       expect(() => calculator.add(5, null)).toThrow('Input must be a number')
-      expect(() => calculator.add('hello', '5')).toThrow('Input must be a number')
+      expect(() => calculator.add('hello', '5')).toThrow(
+        'Input must be a number'
+      )
     })
 
     it('throws error for special numbers', () => {
@@ -43,7 +45,6 @@ describe('Calculator', () => {
       expect(() => calculator.add(-Infinity, 5)).toThrow(
         'Input must be a valid, finite number (not NaN or Infinity)'
       )
-      
     })
 
     it('checks for missing arguments', () => {
@@ -54,7 +55,7 @@ describe('Calculator', () => {
 
   // Tests for 'subtract' function
   describe('subtractNumbers', () => {
-    it('subtracts two integers', () => {
+    it('subtracts two positive integers', () => {
       expect(calculator.subtract(3, 3)).toEqual(0)
       expect(calculator.subtract(3, 2)).toEqual(1)
       expect(calculator.subtract(5, 6)).toEqual(-1)
@@ -111,56 +112,65 @@ describe('Calculator', () => {
 
   // Tests for 'divide' function
   describe('divideNumbers', () => {
-    test('divides two positive numbers', () => {
+    it('divides two positive integers', () => {
       expect(calculator.divide(3, 3)).toEqual(1)
       expect(calculator.divide(3, 2)).toEqual(1.5)
       expect(calculator.divide(5, 6)).toBeCloseTo(0.83)
     })
 
-    test('divides two negative numbers', () => {
+    it('handles negative integers', () => {
       expect(calculator.divide(-3, -3)).toEqual(1)
       expect(calculator.divide(-3, -2)).toEqual(1.5)
       expect(calculator.divide(-5, -6)).toBeCloseTo(0.83)
+      expect(calculator.divide(-5, 6)).toBeCloseTo(-0.83)
+      expect(calculator.divide(5, -6)).toBeCloseTo(-0.83)
     })
 
-    test('divides a number by zero', () => {
-      expect(() => calculator.divide(0, 0)).toThrow(Error)
-      expect(() => calculator.divide(2, 0)).toThrow(Error)
-      expect(() => calculator.divide(-2, 0)).toThrow(Error)
+    it('divides a number by zero', () => {
+      expect(() => calculator.divide(0, 0)).toThrow('Zero division error')
+      expect(() => calculator.divide(2, 0)).toThrow('Zero division error')
+      expect(() => calculator.divide(-2, 0)).toThrow('Zero division error')
+      expect(() => calculator.divide(-2.2, 0)).toThrow('Zero division error')
     })
 
-    test('divides zero by a number', () => {
+    it('divides zero by a number', () => {
       expect(calculator.divide(0, 3)).toEqual(0)
       expect(calculator.divide(0, -2)).toEqual(-0)
       expect(calculator.divide(0, 2.5)).toEqual(0)
+      expect(calculator.divide(0, -2.5)).toEqual(-0)
     })
 
-    test('divides one positive, one negative number', () => {
-      expect(calculator.divide(5, -6)).toBeCloseTo(-0.83)
-      expect(calculator.divide(-6, 5)).toEqual(-1.2)
-    })
-
-    test('handles floating point division', () => {
-      expect(calculator.divide(5.5, 2.2)).toBeCloseTo(2.5)
-      expect(calculator.divide(5, 2.5)).toBeCloseTo(2)
-    })
-
-    test('handles floating point numbers', () => {
+    it('divides two floating point numbers', () => {
       expect(calculator.divide(0.1, 0.3)).toBeCloseTo(0.33)
+      expect(calculator.divide(5, 2.5)).toBeCloseTo(2)
+      expect(calculator.divide(2.5, 5)).toBeCloseTo(0.5)
       expect(calculator.divide(-0.5, -0.6)).toBeCloseTo(0.83)
       expect(calculator.divide(-0.5, 0.6)).toBeCloseTo(-0.83)
       expect(calculator.divide(0.6, -0.5)).toBeCloseTo(-1.2)
     })
 
-    test('checks for numbers as both arguments', () => {
-      expect(() => calculator.divide('hello', 5)).toThrow(Error)
-      expect(() => calculator.divide(5, null)).toThrow(Error)
-      expect(() => calculator.divide('hello', NaN)).toThrow(Error)
+    it('throws error for invalid input', () => {
+      expect(() => calculator.divide('hello', 5)).toThrow(
+        'Input must be a number'
+      )
+      expect(() => calculator.divide(5, null)).toThrow('Input must be a number')
     })
 
-    test('checks for missing arguments', () => {
-      expect(() => calculator.divide(5)).toThrow(Error)
-      expect(() => calculator.divide()).toThrow(Error)
+    it('throws error for special numbers', () => {
+      expect(() => calculator.divide(NaN, 5)).toThrow(
+        'Input must be a valid, finite number (not NaN or Infinity)'
+      )
+      expect(() => calculator.divide(5, Infinity)).toThrow(
+        'Input must be a valid, finite number (not NaN or Infinity)'
+      )
+      expect(() => calculator.divide(-Infinity, 5)).toThrow(
+        'Input must be a valid, finite number (not NaN or Infinity)'
+      )
+    })
+
+    it('checks for missing arguments', () => {
+      expect(() => calculator.divide(5)).toThrow('Missing arguments')
+      expect(() => calculator.divide(5)).toThrow('Missing arguments')
     })
   })
 
@@ -205,4 +215,3 @@ describe('Calculator', () => {
     })
   })
 })
-
