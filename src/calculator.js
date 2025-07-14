@@ -5,6 +5,7 @@ const calculator = {
     if (arguments.length < 2) {
       throw new Error('Missing arguments')
     }
+
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
       throw new Error('Input must be a number')
@@ -19,13 +20,29 @@ const calculator = {
         'Input must be a valid, finite number (not NaN or Infinity)'
       )
     }
-      return x + y
+
+    return x + y
   },
   // Function to subtract two numbers
   subtract(x, y) {
+    // Check for missing arguments
+    if (arguments.length < 2) {
+      throw new Error('Missing arguments')
+    }
+    
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
-      throw new Error('Enter a number')
+      throw new Error('Input must be a number')
+    }
+
+    // Check for finite numbers
+    if (
+      (typeof x === 'number' && !Number.isFinite(x)) ||
+      (typeof y === 'number' && !Number.isFinite(y))
+    ) {
+      throw new Error(
+        'Input must be a valid, finite number (not NaN or Infinity)'
+      )
     }
 
     return x - y
