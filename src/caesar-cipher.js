@@ -1,23 +1,23 @@
 // Function to generate cipher text
 function caesarCipher(str, key) {
-  // Check if str is string
-  if (typeof str !== 'string' && typeof str !== 'undefined') {
+  // Check for missing arguments
+  if (arguments.length < 2) {
+    throw new Error('Missing arguments')
+  }
+
+  // Check for string as first argument
+  if (typeof str !== 'string') {
     throw new TypeError('Input must be a string')
   }
 
   // Check if key is number
-  if (typeof key !== 'number' && typeof key !== 'undefined') {
+  if (typeof key !== 'number') {
     throw new TypeError('Input must be a number')
-  }
-
-  // Check for missing arguments
-  if (typeof str === 'undefined' || typeof key === 'undefined') {
-    throw new Error('Missing arguments')
   }
 
   // Generate array with lower and upper case letters
   const plainTextAlphabetArray =
-    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+    'abcdefghijklmnopqrstuvwxyz'.split('')
 
   // Generate array with shifted letters
   const cipherTextAlphabetArray = generateCipherTextAlphabetArray(
@@ -36,12 +36,12 @@ function caesarCipher(str, key) {
   return cipherText
 }
 
+
 function generateCipherTextAlphabetArray(plainTextAlphabetArray, key) {
-  // Use modulo 52 to generate new index if index + key > 50
 
   const length = plainTextAlphabetArray.length
-  const cipherTextAlphabetArray = plainTextAlphabetArray.map((_, index) => plainTextAlphabetArray[(index + key + length) % 52]
-
+  const cipherTextAlphabetArray = plainTextAlphabetArray.map(
+    (_, index) => plainTextAlphabetArray[((index + key) % length + length) % length]
   )
 
   return cipherTextAlphabetArray
@@ -55,6 +55,7 @@ function generateMatchingArray(
     plainTextAlphabetArray[index],
     cipherTextAlphabetArray[index],
   ])
+
   return matchingArray
 }
 
@@ -67,14 +68,14 @@ function generateCipherText(str, matchingArray) {
       const array = matchingArray[i]
 
       if (
-        stringAlphabet === array[0] &&
+        stringAlphabet.toLowerCase() === array[0] &&
         stringAlphabet === stringAlphabet.toLowerCase()
       ) {
-        cipherText += array[1].toLowerCase()
+        cipherText += array[1]
         matched = true
         break // Stop iterating over remaining arrays
       } else if (
-        stringAlphabet === array[0] &&
+        stringAlphabet.toLowerCase() === array[0] &&
         stringAlphabet === stringAlphabet.toUpperCase()
       ) {
         cipherText += array[1].toUpperCase()
@@ -83,7 +84,7 @@ function generateCipherText(str, matchingArray) {
       }
     }
 
-    // Add the unmatched character after the loop ends
+    // Add the unmatched character after loop ends
     if (!matched) {
       cipherText += stringAlphabet
     }
