@@ -28,28 +28,32 @@ describe('Calculator', () => {
     })
 
     it('throws error for invalid inputs', () => {
-      expect(() => calculator.add('hello', 5)).toThrow('Input must be a number')
-      expect(() => calculator.add(5, null)).toThrow('Input must be a number')
+      expect(() => calculator.add('hello', 5)).toThrow(
+        'Both arguments must be numbers'
+      )
+      expect(() => calculator.add(5, null)).toThrow(
+        'Both arguments must be numbers'
+      )
       expect(() => calculator.add('hello', '5')).toThrow(
-        'Input must be a number'
+        'Both arguments must be numbers'
       )
     })
 
     it('throws error for special numbers', () => {
       expect(() => calculator.add(NaN, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.add(5, Infinity)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.add(-Infinity, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
     })
 
     it('checks for missing arguments', () => {
-      expect(() => calculator.add(5)).toThrow('Missing arguments')
-      expect(() => calculator.add()).toThrow('Missing arguments')
+      expect(() => calculator.add(5)).toThrow('Both arguments must be provided')
+      expect(() => calculator.add()).toThrow('Both arguments must be provided')
     })
   })
 
@@ -85,28 +89,32 @@ describe('Calculator', () => {
 
     it('throws error for invalid input', () => {
       expect(() => calculator.subtract('hello', 5)).toThrow(
-        'Input must be a number'
+        'Both arguments must be numbers'
       )
       expect(() => calculator.subtract(5, null)).toThrow(
-        'Input must be a number'
+        'Both arguments must be numbers'
       )
     })
 
     it('throws error for special numbers', () => {
       expect(() => calculator.subtract(NaN, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.subtract(5, Infinity)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.subtract(-Infinity, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
     })
 
     it('checks for missing arguments', () => {
-      expect(() => calculator.subtract(5)).toThrow('Missing arguments')
-      expect(() => calculator.subtract()).toThrow('Missing arguments')
+      expect(() => calculator.subtract(5)).toThrow(
+        'Both arguments must be provided'
+      )
+      expect(() => calculator.subtract()).toThrow(
+        'Both arguments must be provided'
+      )
     })
   })
 
@@ -127,10 +135,10 @@ describe('Calculator', () => {
     })
 
     it('divides a number by zero', () => {
-      expect(() => calculator.divide(0, 0)).toThrow('Zero division error')
-      expect(() => calculator.divide(2, 0)).toThrow('Zero division error')
-      expect(() => calculator.divide(-2, 0)).toThrow('Zero division error')
-      expect(() => calculator.divide(-2.2, 0)).toThrow('Zero division error')
+      expect(() => calculator.divide(0, 0)).toThrow('Cannot divide by zero')
+      expect(() => calculator.divide(2, 0)).toThrow('Cannot divide by zero')
+      expect(() => calculator.divide(-2, 0)).toThrow('Cannot divide by zero')
+      expect(() => calculator.divide(-2.2, 0)).toThrow('Cannot divide by zero')
     })
 
     it('divides zero by a number', () => {
@@ -151,26 +159,32 @@ describe('Calculator', () => {
 
     it('throws error for invalid input', () => {
       expect(() => calculator.divide('hello', 5)).toThrow(
-        'Input must be a number'
+        'Both arguments must be numbers'
       )
-      expect(() => calculator.divide(5, null)).toThrow('Input must be a number')
+      expect(() => calculator.divide(5, null)).toThrow(
+        'Both arguments must be numbers'
+      )
     })
 
     it('throws error for special numbers', () => {
       expect(() => calculator.divide(NaN, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.divide(5, Infinity)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.divide(-Infinity, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
     })
 
     it('checks for missing arguments', () => {
-      expect(() => calculator.divide(5)).toThrow('Missing arguments')
-      expect(() => calculator.divide(5)).toThrow('Missing arguments')
+      expect(() => calculator.divide(5)).toThrow(
+        'Both arguments must be provided'
+      )
+      expect(() => calculator.divide(5)).toThrow(
+        'Both arguments must be provided'
+      )
     })
   })
 
@@ -197,27 +211,33 @@ describe('Calculator', () => {
     })
 
     it('throws error for invalid input', () => {
-      expect(() => calculator.multiply('hello', 5)).toThrow('Input must be a number')
+      expect(() => calculator.multiply('hello', 5)).toThrow(
+        'Both arguments must be numbers'
+      )
       expect(() => calculator.multiply(5, null)).toThrow(
-        'Input must be a number'
+        'Both arguments must be numbers'
       )
     })
 
     it('throws error for special numbers', () => {
       expect(() => calculator.multiply(NaN, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.multiply(5, Infinity)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
       expect(() => calculator.multiply(-Infinity, 5)).toThrow(
-        'Input must be a valid, finite number (not NaN or Infinity)'
+        'Both arguments must be finite numbers (not NaN or Infinity)'
       )
     })
 
     it('checks for missing arguments', () => {
-      expect(() => calculator.multiply(5)).toThrow('Missing arguments')
-      expect(() => calculator.multiply()).toThrow('Missing arguments')
+      expect(() => calculator.multiply(5)).toThrow(
+        'Both arguments must be provided'
+      )
+      expect(() => calculator.multiply()).toThrow(
+        'Both arguments must be provided'
+      )
     })
   })
 })

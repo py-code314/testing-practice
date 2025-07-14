@@ -3,22 +3,17 @@ const calculator = {
   add(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
-      throw new Error('Missing arguments')
+      throw new Error('Both arguments must be provided')
     }
 
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
-      throw new Error('Input must be a number')
+      throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
-    if (
-      (typeof x === 'number' && !Number.isFinite(x)) ||
-      (typeof y === 'number' && !Number.isFinite(y))
-    ) {
-      throw new Error(
-        'Input must be a valid, finite number (not NaN or Infinity)'
-      )
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
     }
 
     return x + y
@@ -27,22 +22,17 @@ const calculator = {
   subtract(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
-      throw new Error('Missing arguments')
+      throw new Error('Both arguments must be provided')
     }
 
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
-      throw new Error('Input must be a number')
+      throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
-    if (
-      (typeof x === 'number' && !Number.isFinite(x)) ||
-      (typeof y === 'number' && !Number.isFinite(y))
-    ) {
-      throw new Error(
-        'Input must be a valid, finite number (not NaN or Infinity)'
-      )
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
     }
 
     return x - y
@@ -51,27 +41,22 @@ const calculator = {
   divide(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
-      throw new Error('Missing arguments')
+      throw new Error('Both arguments must be provided')
     }
 
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
-      throw new Error('Input must be a number')
+      throw new Error('Both arguments must be numbers')
     }
 
     // Throw zero division error
     if (y === 0) {
-      throw new Error('Zero division error')
+      throw new Error('Cannot divide by zero')
     }
 
     // Check for finite numbers
-    if (
-      (typeof x === 'number' && !Number.isFinite(x)) ||
-      (typeof y === 'number' && !Number.isFinite(y))
-    ) {
-      throw new Error(
-        'Input must be a valid, finite number (not NaN or Infinity)'
-      )
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
     }
 
     return x / y
@@ -80,22 +65,17 @@ const calculator = {
   multiply(x, y) {
     // Check for missing arguments
     if (arguments.length < 2) {
-      throw new Error('Missing arguments')
+      throw new Error('Both arguments must be provided')
     }
 
     // Check for type
     if (typeof x !== 'number' || typeof y !== 'number') {
-      throw new Error('Input must be a number')
+      throw new Error('Both arguments must be numbers')
     }
 
     // Check for finite numbers
-    if (
-      (typeof x === 'number' && !Number.isFinite(x)) ||
-      (typeof y === 'number' && !Number.isFinite(y))
-    ) {
-      throw new Error(
-        'Input must be a valid, finite number (not NaN or Infinity)'
-      )
+    if (!Number.isFinite(x) || !Number.isFinite(y)) {
+      throw new Error('Both arguments must be finite numbers (not NaN or Infinity)')
     }
 
     return x * y
