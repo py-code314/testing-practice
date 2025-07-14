@@ -5,7 +5,12 @@ const analyzeArray = require('../src/analyze-array')
 // Tests
 describe('analyzeArray', () => {
   it('outputs an object from an array', () => {
-    expect(analyzeArray([1,8,3,4,2,6])).toEqual({average: 4, min: 1, max: 8, length: 6})
+    expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+      average: 4,
+      min: 1,
+      max: 8,
+      length: 6,
+    })
   })
 
   it('analyzes array with negative values', () => {
@@ -27,7 +32,7 @@ describe('analyzeArray', () => {
 
   it('analyzes array with floating point numbers', () => {
     const result = analyzeArray([1, 8.5, 3, 4.0, 2.1])
-    expect(result.average).toBeCloseTo(3.720, 2)
+    expect(result.average).toBeCloseTo(3.72, 2)
     expect(result.min).toEqual(1)
     expect(result.max).toEqual(8.5)
     expect(result.length).toEqual(5)
@@ -73,7 +78,9 @@ describe('analyzeArray', () => {
   })
 
   it('throws an error for non-numerical values', () => {
-    expect(() => analyzeArray([null, 4, 8, 2])).toThrow('All values must be numbers')
+    expect(() => analyzeArray([null, 4, 8, 2])).toThrow(
+      'All values must be numbers'
+    )
   })
 
   it('throws an error for special numbers', () => {
@@ -84,6 +91,4 @@ describe('analyzeArray', () => {
       'All numbers must be valid, finite numbers (not NaN or Infinity)'
     )
   })
-
-
 })

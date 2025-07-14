@@ -1,43 +1,31 @@
 // Function to generate an object from an array
 function analyzeArray(array) {
-  // Initialize empty object
-  const object = {}
-
-  // Get length of array
   const length = array.length
   if (!length) {
     throw new Error('Array must not be empty')
   }
-  object.length = length
 
-  // Get total
-  const total = array.reduce((previous, current) => {
-    // Check for special numbers
-    if (typeof current === 'number' && !Number.isFinite(current)) {
-      throw new Error(
-        'All numbers must be valid, finite numbers (not NaN or Infinity)'
-      )
-    }
-    // Check for number inputs
-    if (typeof current !== 'number') {
-      throw new Error('All values must be numbers')
-    }
-    return previous + current
-  }, 0)
+  const result = {
+    length,
+    average:
+      array.reduce((total, currentNumber) => {
+        // Check for special numbers
+        if (typeof currentNumber === 'number' && !Number.isFinite(currentNumber)) {
+          throw new Error(
+            'All numbers must be valid, finite numbers (not NaN or Infinity)'
+          )
+        }
+        // Check for number inputs
+        if (typeof currentNumber !== 'number') {
+          throw new Error('All values must be numbers')
+        }
+        return total + currentNumber
+      }, 0) / length,
+    min: Math.min(...array),
+    max: Math.max(...array),
+  }
 
-  // Get average
-  const average = total / length
-  object.average = average
-
-  // Get the smallest number in array
-  const minNumber = Math.min(...array)
-  object.min = minNumber
-
-  // Get the largest number in array
-  const maxNumber = Math.max(...array)
-  object.max = maxNumber
-
-  return object
+  return result
 }
 
 module.exports = analyzeArray
